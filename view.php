@@ -6,7 +6,8 @@ if(!isset($_SESSION['login']))
 {
  header("Location: login.php");
   die();
-}
+}else
+{
 $id= $_GET['id'];
 $conn=mysqli_connect('localhost','root','dhruba0004','blog');
 if($conn)
@@ -16,10 +17,8 @@ if($conn)
 
   $std=mysqli_fetch_assoc($result);
 
-  //echo $std['Name']."  ".$std['Phone number'];
-
 }
-
+}
 ?>
 
 
@@ -38,13 +37,15 @@ if($conn)
 
     <title>Hello, world!</title>
   </head>
-  <body>
+  <body style="background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(2 67 147));">
     <br><br><br>
 
     <div class="container">
       <div class="row">
         <div class="col-md-3">
           <a class="btn btn-info mb-2" href="index.php">Student list</a>
+            <br><br><br><br><br>
+          <img src="index.jpg" style="float: left; width:280px;height:300px">
         </div>
         <div class="col-md-9">
            <?php if(isset($_SESSION['success'])){?>
@@ -57,23 +58,44 @@ if($conn)
           <table class ="table">
                <tr>
             <th class="text-right" width="150">ID :</th>
-            <td><?php echo $std['ID']?></td>
+            <td><?php echo $std['ID'] ;?></td>
           </tr>
             <tr>
             <th class="text-right" width="150">Name :</th>
-            <td><?php echo $std['Name']?></td>
+            <td><?php echo $std['Name'];?></td>
+          </tr>
+            <tr>
+            <th class="text-right" width="150">Father's Name :</th>
+            <td><?php echo $std["Father's_name"];?></td>
+          </tr>
+            <tr>
+            <th class="text-right" width="150">Mother's Name :</th>
+            <td><?php echo $std["Mother's_name"];?></td>
+          </tr>
+           <tr>
+            <th class="text-right" width="150">Address :</th>
+            <td><?php echo $std["Address"];?></td>
+          </tr>
+                 <tr>
+            <th class="text-right" width="150">Date of birth :</th>
+            <td><?php echo $std['Date of birth'];?></td>
           </tr>
                <tr>
             <th class="text-right" width="150">Department :</th>
-            <td><?php echo $std['Department']?></td>
+            <td><?php echo $std['Department'];?></td>
           </tr>
             <tr>
-            <th class="text-right" width="150">Phone number :</th>
-            <td><?php echo $std['Phone number']?></td>
+            <th class="text-right" width="150">Year :</th>
+            <td><?php echo $std["Year"];?></td>
           </tr>
-              <tr>
-            <th class="text-right" width="150">Date of birth :</th>
-            <td><?php echo $std['Date of birth']?></td>
+
+            <tr>
+            <th class="text-right" width="150">Phone number :</th>
+            <td><?php echo $std['Phone number'];?></td>
+          </tr>
+            <tr>
+            <th class="text-right" width="150">Email address :</th>
+            <td><?php echo $std["Email"];?></td>
           </tr>
 
 

@@ -13,12 +13,60 @@ session_start();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
     <title>Hello, world!</title>
+        <style>
+      
+        body{
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      align-items: center;
+      background-image: url('login.jpg');
+      background-size: cover;
+      background-position: top center;
+      font-family: sans-serif;
+  }
+.form-control
+{
+ background-color: #d6dcff;
+     border: 1.5px solid #09427c;
+
+
+  }
+  hr
+  {
+    color: #0d0f1a;
+    padding: 1.2px;
+  }
+
+  label{
+      background-color: #d5faff;
+    color: #080858;
+    border-radius: 5px;
+    font-weight: bold;
+    padding: 5px;
+    margin: 10px 0;
+}
+h2
+{
+      font-weight: bold;
+    color: #06075e;
+}
+.link
+{
+  margin:0 10px;
+}
+
+    </style>
   </head>
   <body>
     <br><br><br>
 
     <div class="container">
       <div class="row">
+          <div class="col-md-3">
+          <a class="btn btn-info mb-2" href="home.php">Back to home</a><br>
+          
+        </div>
         <div class="col-md-6">
 
              <?php if(isset($_SESSION['error_msg'])) { ?>
@@ -47,8 +95,8 @@ session_start();
               <label>Confirm Password :</label>
               <input required type="password" class="form-control" name="confirm_password" placeholder="Confirm password">
             </div><br><br>
-           <button type="submit" class="btn btn-primary">Submit</button><br>Already have an account?
-           <a class="btn btn-link" href="login.php">Login</a>
+           <button type="submit" class="btn btn-success">Submit</button><br>Already have an account?
+           <a class="btn btn-body link" href="login.php">Login</a>
           </form>
        
         </div>

@@ -6,14 +6,15 @@ if(!isset($_SESSION['login']))
 {
  header("Location: login.php");
   die();
-}
-else
+}else{
+$department= $_GET['department'];
 $conn=mysqli_connect('localhost','root','dhruba0004','blog');
 if($conn)
 {
-  $sql="SELECT * fROM students";
+  $sql="SELECT * fROM students where department=$department";
   $result=mysqli_query($conn,$sql);
-
+ //$std=mysqli_fetch_assoc($result);
+}
 }
 
 ?>
@@ -30,6 +31,16 @@ if($conn)
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
     <title>Hello, world!</title>
+      <style>
+      .bttn:Active
+      {
+        background-color:blue;
+      }
+      .bttn:visited
+      {
+        background-color:red;
+      }
+    </style>
   </head>
   <body style="background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(2 67 147));">
     <br><br><br>
@@ -37,7 +48,7 @@ if($conn)
     <div class="container">
       <div class="row">
         <div class="col-md-3">
-          <a class="btn btn-info mb-2" href="insert.php">New student</a><br><br><br><br><br>
+          <a class="btn btn-info mb-2" href="insert.php">New student</a><br><br><br><br><br><br>
           <img src="index.jpg" style="float: left; width:280px;height:300px">
           
         </div>
@@ -50,14 +61,20 @@ if($conn)
           <a class="btn btn-danger pull-right" style="float:right;" href="logout.php">Logout</a><br>
           <h2>Student list</h2>
           <hr>
+
           <a class="btn btn-success mb-2" href="index.php">All students  </a>
-           <a class="btn btn-success mb-2" href="department.php?department='CSE'">CSE  </a>
+          <a class="btn btn-success mb-2" href="department.php?department='CSE'">CSE  </a>
           <a class="btn btn-success mb-2" href="department.php?department='EEE'">EEE </a>
           <a class="btn btn-success mb-2" href="department.php?department='MCE'">MCE </a>
           <a class="btn btn-success mb-2" href="department.php?department='CEE'">CEE  </a>
           <a class="btn btn-success mb-2" href="department.php?department='BTM'">BTM </a>
           <hr>
-          <br>
+          <a class="btn btn-dark mb-2" href="Year.php?year='1st'&department='CSE'">1st year </a>
+          <a class="btn btn-dark mb-2" href="Year.php?year='2nd'&department='EEE'">2nd year  </a>
+          <a class="btn btn-dark mb-2" href="Year.php?year='3rd'&department='MCE'">3rd year  </a>
+          <a class="btn btn-dark mb-2" href="Year.php?year='4th'&department='CEE'">4th year </a>
+
+          <br><br>
 
 
 
@@ -102,5 +119,6 @@ if($conn)
 
   </body>
 </html>
+
 
 <?php unset($_SESSION['success']); ?>
