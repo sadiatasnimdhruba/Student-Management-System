@@ -94,7 +94,7 @@ h2
         <?php }?>
           <h2>Add new Student</h2>
           <hr>
-          <form action="store.php" method="POST">
+          <form action="store.php" method="POST" enctype="multipart/form-data">
              <div class="form-group">
               <label>ID :</label>
               <input required type="number" class="form-control" name="id" placeholder="Student id">
@@ -134,6 +134,10 @@ h2
             <div class="form-group">
               <label>Email address :</label>
               <input required type="text" class="form-control" name="email" placeholder="Email Address">
+            </div><br>
+             <div class="form-group">
+              <label>Image :</label>
+              <input required type="file" class="form-control" name="image">
             </div><br>
           
              <br>

@@ -68,6 +68,11 @@ h2
           
         </div>
         <div class="col-md-6">
+          <?php if(isset($_SESSION['regi_msg'])) { ?>
+          <div class="alert alert-success">
+            <strong>Registration successfully! </strong><?php echo $_SESSION['regi_msg']; ?>
+          </div>
+        <?php } ?>
 
              <?php if(isset($_SESSION['error_msg'])) { ?>
           <div class="alert alert-warning">
@@ -96,7 +101,7 @@ h2
               <input required type="password" class="form-control" name="confirm_password" placeholder="Confirm password">
             </div><br><br>
            <button type="submit" class="btn btn-success">Submit</button><br>Already have an account?
-           <a class="btn btn-body link" href="login.php">Login</a>
+           <a class="btn btn-body link" href="userlogin.php">Login</a>
           </form>
        
         </div>
@@ -114,3 +119,4 @@ h2
 
 <?php unset($_SESSION['error_msg']); ?>
 <?php unset($_SESSION['error']); ?>
+<?php unset($_SESSION['regi_msg']); ?>

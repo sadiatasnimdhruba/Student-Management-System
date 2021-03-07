@@ -1,6 +1,7 @@
 <?php
 session_start();
 $conn=mysqli_connect('localhost','root','dhruba0004','blog');
+
 if($conn)
 {
   $sql="SELECT * fROM students";
@@ -85,26 +86,36 @@ h2
           </div>
         <?php } ?>
 
-             <?php if(isset($_SESSION['regi_msg'])) { ?>
+             
+
+        <?php if(isset($_SESSION['recover'])) { ?>
           <div class="alert alert-success">
-            <strong>Registration successfully! </strong><?php echo $_SESSION['regi_msg']; ?>
+            <strong>Your password successfully sent to <?php echo $_SESSION['recover']; ?> </strong>
+          </div>
+        <?php } ?>
+        <?php if(isset($_SESSION['fail'])) { ?>
+          <div class="alert alert-warning">
+            <strong>Sorry! </strong>Your email doesn't match any account
           </div>
         <?php } ?>
 
 
           <h2>Login</h2>
           <hr>
-          <form action="confirmlogin.php" method="POST">
+          <form action="userconfirmlogin.php" method="POST">
             <div class="form-group">
               <label>Email :</label><br>
               <input required type="email" class="form-control" name="email" placeholder="Email address">
             </div><br>
                     <div class="form-group">
               <label>Password :</label><br>
-              <input required type="password" class="form-control" name="password" placeholder="Type a password">
-            </div><br><br>
+              <input type="password" class="form-control" name="password" placeholder="Type a password">
+            </div><br>
+            
+            <button type="submit" class="btn btn-link" name="submit1">Forgot password?</button><br><br>
+          
            <button type="submit" class="btn btn-success link">Submit</button>
-           <!--<a class="btn btn-body link"  href="registration.php">Create new account</a>-->
+           <a class="btn btn-body link"  href="registration.php">Create new account</a>
           </form>
        
         </div>
@@ -120,5 +131,7 @@ h2
   </body>
 </html>
 <?php unset($_SESSION['error']); ?>
-<?php unset($_SESSION['regi_msg']); ?>
+
 <?php unset($_SESSION['error_msg']); ?>
+<?php unset($_SESSION['recover']); ?>
+<?php unset($_SESSION['fail']); ?>

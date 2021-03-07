@@ -94,7 +94,13 @@ h2
         <?php }?>
           <h2>Edit Student information</h2>
           <hr>
-          <form action="edit1.php?id=<?php echo $id ?>" method="POST">
+          <form action="edit1.php?id=<?php echo $id ?>" method="POST" enctype="multipart/form-data">
+
+            <div class="form-group">
+             <label for="title">Image:</label>
+             <input type="file" class="form-control"  name="image"><br>
+             <img src="<?php echo $std['image']; ?>" width="200">
+            </div>
          
             <div class="form-group">
               <label>Name :</label>

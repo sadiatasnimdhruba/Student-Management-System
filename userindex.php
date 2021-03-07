@@ -4,16 +4,26 @@ session_start();
 
 if(!isset($_SESSION['login']))
 {
- header("Location: login.php");
+ header("Location: userlogin.php");
   die();
 }
 else
+{
 $conn=mysqli_connect('localhost','root','dhruba0004','blog');
 if($conn)
 {
-  $sql="SELECT * fROM students";
+  if (isset($_GET['q']))
+  {
+    $q = $_GET['q'];
+    $sql="SELECT * fROM students where name LIKE '%$q%' or id='$q'";
+  }
+  else
+  {
+     $sql="SELECT * fROM students";
+  }
   $result=mysqli_query($conn,$sql);
 
+}
 }
 
 ?>
@@ -50,18 +60,26 @@ if($conn)
           <a class="btn btn-danger pull-right" style="float:right;" href="logout.php">Logout</a><br>
           <h2>Student list</h2>
           <hr>
-          <a class="btn btn-success mb-2" href="index.php">All students  </a>
+          <a class="btn btn-success mb-2" href="userindex.php">All students  </a>
            <a class="btn btn-success mb-2" href="department.php?department='CSE'">CSE  </a>
           <a class="btn btn-success mb-2" href="department.php?department='EEE'">EEE </a>
           <a class="btn btn-success mb-2" href="department.php?department='MCE'">MCE </a>
           <a class="btn btn-success mb-2" href="department.php?department='CEE'">CEE  </a>
           <a class="btn btn-success mb-2" href="department.php?department='BTM'">BTM </a>
           <hr>
-          <br>
-
-            
-
-
+  
+               <div class="row">
+          <div class="col-md-6">
+               <form class="my-4">
+              <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="search....">
+                <div class="input-group-append" style="margin-left:12px;">
+                  <button type="submit" class="btn btn-success">Search</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
 
           <table class="table">
             <thead>
@@ -82,8 +100,6 @@ if($conn)
                 <td><?php echo $row['Year']?></td>
                 <td>
                   <a class="btn btn-info mb-2" href="view.php?id=<?php echo $row['ID'];?>">View  </a>
-                  <a class="btn btn-warning mb-2" href="edit.php?id=<?php echo $row['ID'];?>">Edit</a>
-                  <a class="btn btn-danger mb-2" onclick="return confirm('Are you sure?')" href="delete.php?id=<?php echo $row['ID'];?>">Delete</a>
                 </td>
 
               </tr>

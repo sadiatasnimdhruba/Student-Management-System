@@ -6,7 +6,7 @@ session_start();
 
   $conn=mysqli_connect('localhost','root','dhruba0004','blog');
 
-  $sql="SELECT * from users where email='$email' and password='$password'";
+  $sql="SELECT * from admin where email='$email' and password='$password'";
 
    $result=mysqli_query($conn, $sql);
 

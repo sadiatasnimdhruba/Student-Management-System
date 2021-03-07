@@ -56,6 +56,10 @@ if($conn)
           <h2>Student individual information</h2>
           <hr>
           <table class ="table">
+            <tr>
+              <th>Image :</th>
+              <td><img src="<?php echo $std['image'] ;?>" width="300"></td>
+          </tr>
                <tr>
             <th class="text-right" width="150">ID :</th>
             <td><?php echo $std['ID'] ;?></td>
